@@ -43,6 +43,8 @@ public class ProcessEnvironmentTransformer implements MyTransformer {
                         toInject.add(new VarInsnNode(ALOAD, 0));  // Load "name"
                         toInject.add(new MethodInsnNode(INVOKESTATIC, "com/janetfilter/plugins/env/EnvFilter", "testGetEnv", "(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;", false));
                         m.instructions.insertBefore(insn, toInject);
+
+                        break;
                     }
                 }
 
@@ -57,6 +59,8 @@ public class ProcessEnvironmentTransformer implements MyTransformer {
                         InsnList toInject = new InsnList();
                         toInject.add(new MethodInsnNode(INVOKESTATIC, "com/janetfilter/plugins/env/EnvFilter", "testGetEnv", "(Ljava/util/Map;)Ljava/util/Map;", false));
                         m.instructions.insertBefore(insn, toInject);
+
+                        break;
                     }
                 }
 
@@ -71,6 +75,8 @@ public class ProcessEnvironmentTransformer implements MyTransformer {
                         InsnList toInject = new InsnList();
                         toInject.add(new MethodInsnNode(INVOKESTATIC, "com/janetfilter/plugins/env/EnvFilter", "testEnvironment", "(Ljava/util/Map;)Ljava/util/Map;", false));
                         m.instructions.insertBefore(insn, toInject);
+
+                        break;
                     }
                 }
             }
