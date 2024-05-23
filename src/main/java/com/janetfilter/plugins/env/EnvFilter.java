@@ -10,7 +10,6 @@ import java.util.Map;
 
 public class EnvFilter {
     private static Map<String, String> myEnvironment;
-    private static HashMap<String, String> theEnvironment;
     private static Map<String, String> theUnmodifiableEnvironment;
 
     public static void setRules(List<FilterRule> rules) {
@@ -48,13 +47,9 @@ public class EnvFilter {
         return theUnmodifiableEnvironment;
     }
 
-    @SuppressWarnings("unchecked")
     public static Map<String, String> testEnvironment(Map<String, String> origin) {
-        if (null == theEnvironment) {
-            theEnvironment = new HashMap<>(origin);
-            theEnvironment.putAll(myEnvironment);
-        }
+        origin.putAll(myEnvironment);
 
-        return (Map<String, String>) theEnvironment.clone();
+        return origin;
     }
 }
