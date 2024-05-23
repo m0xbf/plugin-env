@@ -29,7 +29,7 @@ public class EnvFilterPlugin implements PluginEntry {
 
     @Override
     public String getVersion() {
-        return "v1.0.1";
+        return "v1.0.2";
     }
 
     @Override
